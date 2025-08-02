@@ -11,7 +11,10 @@ const { initSocket, userSocketMap } = require("./socket");
 const app = express();
 const server = http.createServer(app);
 
-const allowOrigns = ["http://localhost:5173"];
+const allowOrigns = [
+    "http://localhost:5173",
+    "https://chat-app-backend-delta-one.vercel.app",
+];
 
 // middelwares
 app.use(express.json({ limit: "4mb" }));
