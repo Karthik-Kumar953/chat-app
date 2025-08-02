@@ -10,7 +10,7 @@ const { initSocket, userSocketMap } = require("./socket");
 
 const app = express();
 const server = http.createServer(app);
-const PORT = process.env.PORT || 3000;
+
 const allowOrigns = ["http://localhost:5173"];
 
 // middelwares
@@ -28,6 +28,7 @@ app.use(cors({ credentials: true, origin: allowOrigns }));
     app.use("/messages", messageRouter);
 
     if (process.env.NODE_ENV != "production") {
+        const PORT = process.env.PORT || 3000;
         server.listen(PORT, (err) => {
             if (err) {
                 console.log(err);
@@ -37,7 +38,5 @@ app.use(cors({ credentials: true, origin: allowOrigns }));
     }
 })();
 
-module.exports = { userSocketMap };
-
 // export for the vercel
-module.exports = { server };
+module.exports = server;
