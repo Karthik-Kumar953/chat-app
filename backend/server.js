@@ -27,12 +27,17 @@ app.use(cors({ credentials: true, origin: allowOrigns }));
     app.use("/auth", userRouter);
     app.use("/messages", messageRouter);
 
-    server.listen(PORT, (err) => {
-        if (err) {
-            console.log(err);
-        }
-        console.log("Server is running at port: ", PORT);
-    });
+    if (process.env.NODE_ENV != "production") {
+        server.listen(PORT, (err) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log("Server is running at port: ", PORT);
+        });
+    }
 })();
 
 module.exports = { userSocketMap };
+
+// export for the vercel
+module.exports = { server };
