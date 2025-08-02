@@ -13,7 +13,7 @@ const server = http.createServer(app);
 
 const allowOrigns = [
     "http://localhost:5173",
-    "https://chat-app-backend-delta-one.vercel.app",
+    "https://chat-app-beta-gold.vercel.app",
 ];
 
 // middelwares
